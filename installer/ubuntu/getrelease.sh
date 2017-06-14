@@ -20,8 +20,8 @@ fi
 
 # Lookup the release name from the field after the URI
 # We identify URI by '://'
-rel="`sed -n 's|^deb .*://[^ ]* \([^ -]*\).*$|\1|p'' \
-    "$sources" "$sources.d"/*.list 2>/dev/null | head -n 1`"
+rel="$(sed -n 's|^deb .*://[^ ]* \([^ -]*\).*$|\1|p'
+           "$sources" "$sources.d"/*.list 2>/dev/null | head -n 1)"
 if [ -z "$rel" ] || \
         ! grep -q "^$rel\([^a-z].*\)*$" "`dirname "$0"`/releases"; then
     exit 1
